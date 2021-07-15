@@ -1,0 +1,25 @@
+digraph G {
+	node [style=filled];
+    a0 [label="uninitialized"];
+    a1 [label="aborting index builds"];
+    a2 [label="data sync"];
+    a3 [label="blocking"];
+    a4 [label="committed"];
+    a5 [label="aborted"];
+    a6 [label="garbageCollect:true"];
+    a0 -> a0 [label="donorForget/AbortMerge"]
+    a0 -> a1 [label="donorStartMerge"];
+    a1 -> a1 [label="donorStartMerge"];
+    a1 -> a5 [label="donorForget/AbortMerge"]
+    a1 -> a2 [label="TODO: what label?"];
+    a2 -> a2 [label="donorStartMerge"];
+    a2 -> a5 [label="donorForget/AbortMerge"]
+    a2 -> a3 [label="recipientMerge returns ok"];
+    a3 -> a3 [label="donorStartMerge"];
+    a3 -> a5 [label="donorForget/AbortMerge"];
+    a3 -> a4 [label="recipientMerge with\nreturnAfterReachingOpTime\nreturns ok"];
+    a4 -> a4 [label="donorStart/AbortMerge"];
+    a4 -> a6 [label="donorForgetMerge"];
+    a5 -> a5 [label="donorStart/AbortMerge"];
+    a5 -> a6 [label="donorForgetMerge"];
+}
