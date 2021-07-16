@@ -21,7 +21,7 @@ digraph G {
     a2 -> a3 [label="recipientMerge returns ok"];
     a3 -> a3 [label="donorStartMerge"];
     a3 -> a5 [label="donorForget/AbortMerge"];
-    a3 -> a4 [label="recipientMerge with\nreturnAfterReachingTimestamp\nreturns ok"];
+    a3 -> a4 [label="recipientMerge with\nreturnAfterReachingDonorTimestamp\nreturns ok"];
     a4 -> a4 [label="donorStart/AbortMerge"];
     a4 -> a6 [label="donorForgetMerge"];
     a5 -> a5 [label="donorStart/AbortMerge"];
