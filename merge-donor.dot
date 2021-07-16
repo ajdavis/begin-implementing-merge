@@ -2,6 +2,7 @@ digraph G {
 	node [style=filled];
     a0 [label="uninitialized"];
     a1 [label="aborting index builds"];
+    a7 [label="pinning"];
     a2 [label="data sync"];
     a3 [label="blocking"];
     a4 [label="committed"];
@@ -11,13 +12,16 @@ digraph G {
     a0 -> a1 [label="donorStartMerge"];
     a1 -> a1 [label="donorStartMerge"];
     a1 -> a5 [label="donorForget/AbortMerge"]
-    a1 -> a2 [label="TODO: what label?"];
+    a1 -> a7 [label="index builds aborted"];
+    a7 -> a7 [label="donorStartMerge"];
+    a7 -> a2 [label="recipientPinOldestTimestamp returns ok"];
+    a7 -> a5 [label="donorForget/AbortMerge"]
     a2 -> a2 [label="donorStartMerge"];
     a2 -> a5 [label="donorForget/AbortMerge"]
     a2 -> a3 [label="recipientMerge returns ok"];
     a3 -> a3 [label="donorStartMerge"];
     a3 -> a5 [label="donorForget/AbortMerge"];
-    a3 -> a4 [label="recipientMerge with\nreturnAfterReachingOpTime\nreturns ok"];
+    a3 -> a4 [label="recipientMerge with\nreturnAfterReachingTimestamp\nreturns ok"];
     a4 -> a4 [label="donorStart/AbortMerge"];
     a4 -> a6 [label="donorForgetMerge"];
     a5 -> a5 [label="donorStart/AbortMerge"];
