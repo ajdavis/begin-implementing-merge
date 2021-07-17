@@ -14,7 +14,7 @@ digraph G {
     a1 -> a5 [label="donorForget/AbortMerge"]
     a1 -> a7 [label="index builds aborted"];
     a7 -> a7 [label="donorStartMerge"];
-    a7 -> a2 [label="recipientPinOldestTimestamp returns ok"];
+    a7 -> a2 [label="recipientMerge with\nreturnAfterPinningOldestTimestamp\nreturns ok"];
     a7 -> a5 [label="donorForget/AbortMerge"]
     a2 -> a2 [label="donorStartMerge"];
     a2 -> a5 [label="donorForget/AbortMerge"]
