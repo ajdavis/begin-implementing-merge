@@ -4,19 +4,16 @@ digraph G {
     b5 [label="pinned"];
     b1 [label="started"];
     b2 [label="consistent"];
-    b3 [label="cleanup"];
     b4 [label="done"];
     b0 -> b0 [label="recipient(Forget)Merge"];
     b0 -> b5 [label="recipientMerge with\nreturnAfterPinningOldestTimestamp"];
     b5 -> b1 [label="recipientMerge"];
-    b5 -> b3 [label="recipientForgetMerge"];
+    b5 -> b4 [label="recipientForgetMerge"];
     b5 -> b5 [label="recipientMerge with\nreturnAfterPinningOldestTimestamp"];
     b1 -> b2 [label="copied data"];
     b1 -> b1 [label="recipientMerge"];
-    b1 -> b3 [label="recipientForgetMerge"];
-    b2 -> b3 [label="recipientForget/AbortMerge"];
+    b1 -> b4 [label="recipientForgetMerge"];
     b2 -> b2 [label="recipientMerge"];
-    b3 -> b3 [label="recipientStart/Abort/ForgetMerge"];
-    b3 -> b4 [label="cleaned up"];
-    b4 -> b0 [label="TODO: what label?"];
+    b2 -> b4 [label="recipientForgetMerge"];
+    b4 -> b0 [label="garbage collect"];
 }
