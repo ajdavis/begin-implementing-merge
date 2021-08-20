@@ -5,15 +5,15 @@ digraph G {
     b1 [label="started"];
     b2 [label="consistent"];
     b4 [label="done"];
-    b0 -> b0 [label="recipient(Forget)Merge"];
-    b0 -> b5 [label="recipientMerge with\nreturnAfterPinningOldestTimestamp"];
-    b5 -> b1 [label="recipientMerge"];
-    b5 -> b4 [label="recipientForgetMerge"];
-    b5 -> b5 [label="recipientMerge with\nreturnAfterPinningOldestTimestamp"];
+    b0 -> b0 [label="recipientSyncData/ForgetMigration"];
+    b0 -> b5 [label="recipientSyncData with\nreturnAfterPinningOldestTimestamp"];
+    b5 -> b1 [label="recipientSyncData"];
+    b5 -> b4 [label="recipientForgetMigration"];
+    b5 -> b5 [label="recipientSyncData with\nreturnAfterPinningOldestTimestamp"];
     b1 -> b2 [label="copied data"];
-    b1 -> b1 [label="recipientMerge"];
-    b1 -> b4 [label="recipientForgetMerge"];
-    b2 -> b2 [label="recipientMerge"];
-    b2 -> b4 [label="recipientForgetMerge"];
+    b1 -> b1 [label="recipientSyncData"];
+    b1 -> b4 [label="recipientForgetMigration"];
+    b2 -> b2 [label="recipientSyncData"];
+    b2 -> b4 [label="recipientForgetMigration"];
     b4 -> b0 [label="garbage collect"];
 }
