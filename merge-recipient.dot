@@ -15,5 +15,4 @@ digraph G {
     b1 -> b4 [label="recipientForgetMigration"];
     b2 -> b2 [label="recipientSyncData"];
     b2 -> b4 [label="recipientForgetMigration"];
-    b4 -> b0 [label="garbage collect"];
 }
