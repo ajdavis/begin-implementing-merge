@@ -1,15 +1,17 @@
 digraph G {
 	node [style=filled];
+	edge [minlen=2];
     b0 [label="uninitialized"];
-    b5 [label="pinned"];
+    b5 [label="pinned", fontcolor="#009900"];
     b1 [label="started"];
     b2 [label="consistent"];
     b4 [label="done"];
     b0 -> b0 [label="recipientSyncData/ForgetMigration"];
-    b0 -> b5 [label="recipientSyncData with\nreturnAfterPinningOldestTimestamp"];
+    b0 -> b1 [label="recipientSyncData\nprotocol: multitenant migrations", weight=0];
+    b0 -> b5 [label="recipientSyncData\nreturnAfterPinningOldestTimestamp: true\nprotocol: slice merge"; color="#009900"; fontcolor="#009900"];
     b5 -> b1 [label="recipientSyncData"];
     b5 -> b4 [label="recipientForgetMigration"];
-    b5 -> b5 [label="recipientSyncData with\nreturnAfterPinningOldestTimestamp"];
+    b5 -> b5 [label="recipientSyncData\nreturnAfterPinningOldestTimestamp: true\nprotocol: slice merge"; color="#009900"; fontcolor="#009900"];
     b1 -> b2 [label="copied data"];
     b1 -> b1 [label="recipientSyncData"];
     b1 -> b4 [label="recipientForgetMigration"];
