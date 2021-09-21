@@ -1,22 +1,19 @@
 digraph G {
 	edge [minlen=2];
     b0 [label="uninitialized"];
-    b5 [label="pinned", fontcolor="#009900", color="#009900"];
     b1 [label="started"];
     b6 [label="learned filenames", fontcolor="#009900", color="#009900"];
     b7 [label="copied files", fontcolor="#009900", color="#009900"];
     b2 [label="consistent"];
     b4 [label="done"];
     b0 -> b0 [label="recipientSyncData/ForgetMigration"];
-    b0 -> b1 [label="recipientSyncData\nprotocol: multitenant migrations", weight=0];
-    b0 -> b5 [label="recipientSyncData\nreturnAfterPinningOldestTimestamp: true\nprotocol: slice merge"; color="#009900"; fontcolor="#009900"];
-    b5 -> b1 [label="recipientSyncData"];
-    b5 -> b4 [label="recipientForgetMigration"];
-    b5 -> b5 [label="recipientSyncData\nreturnAfterPinningOldestTimestamp: true\nprotocol: slice merge"; color="#009900"; fontcolor="#009900"];
-    b1 -> b2 [label="copy data"];
+    b0 -> b1 [label="recipientSyncData"];
+    b1 -> b2 [label="copy data", weight=2];
     b1 -> b6 [label="iterate backup cursor", fontcolor="#009900"];
     b6 -> b7 [label="copy files", fontcolor="#009900"];
+    b6 -> b4 [label="recipientForgetMigration"];
     b7 -> b2 [label="import files", fontcolor="#009900"];
+    b7 -> b4 [label="recipientForgetMigration"];
     b1 -> b1 [label="recipientSyncData"];
     b1 -> b4 [label="recipientForgetMigration"];
     b2 -> b2 [label="recipientSyncData"];

@@ -2,7 +2,6 @@ digraph G {
 	node [style=filled];
     a0 [label="uninitialized"];
     a1 [label="aborting index builds"];
-    a7 [label="pinning"];
     a2 [label="data sync"];
     a3 [label="blocking"];
     a4 [label="committed"];
@@ -12,10 +11,7 @@ digraph G {
     a0 -> a1 [label="donorStartMigration"];
     a1 -> a1 [label="donorStartMigration"];
     a1 -> a5 [label="donorForget/AbortMigration"]
-    a1 -> a7 [label="index builds aborted"];
-    a7 -> a7 [label="donorStartMigration"];
-    a7 -> a2 [label="recipientSyncData with\nreturnAfterPinningOldestTimestamp\nreturns ok"];
-    a7 -> a5 [label="donorForget/AbortMigration"]
+    a1 -> a2 [label="index builds aborted"];
     a2 -> a2 [label="donorStartMigration"];
     a2 -> a5 [label="donorForget/AbortMigration"]
     a2 -> a3 [label="recipientSyncData returns ok"];
