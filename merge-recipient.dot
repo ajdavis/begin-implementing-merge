@@ -6,7 +6,7 @@ digraph G {
     b7 [label="copied files", fontcolor="#009900", color="#009900"];
     b2 [label="consistent"];
     b4 [label="done"];
-    b0 -> b0 [label="recipientSyncData/ForgetMigration"];
+    b0 -> b0 [label="recipientForgetMigration"];
     b0 -> b1 [label="recipientSyncData"];
     b1 -> b2 [label="copy data", weight=2];
     b1 -> b6 [label="iterate backup cursor", fontcolor="#009900"];
